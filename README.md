@@ -152,7 +152,24 @@ python create_tables.py --reset     # WARNING: deletes existing data
 ## Security notes
 
 This is a college-project level system. Before real deployment: use HTTPS, set a strong `SECRET_KEY` and password, restrict CORS origins in `main.py`, and protect the `uploads/` folder (student photos are personal data).
+## Limitations & Future Scope
 
+**Current limitations**
+
+- **No liveness detection:** a printed or on-screen photo of an enrolled student may be accepted by the camera.
+- **Lighting and angle:** recognition accuracy drops in poor lighting or when the face is turned far from the camera.
+- **Single teacher account:** login credentials are set in the `.env` file; there are no multiple teachers or classes.
+- **Local deployment only:** the app runs on a local computer and is not hosted online.
+- **Database tested on SQLite:** PostgreSQL support is included but has not been tested yet.
+- **Profile settings are browser-only:** the teacher's name and email are stored in the browser, not in the database.
+
+**Future scope**
+
+- Add blink / liveness detection to prevent photo spoofing
+- Support multiple teachers, classes and subjects
+- Per-student attendance percentage and monthly reports
+- Email or SMS alerts for low attendance
+- Deploy online with HTTPS
 ## License
 
 MIT – see [LICENSE](LICENSE).
