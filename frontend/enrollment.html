@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enrollment | Attendora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="enrollment">
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+            <div class="sidebar-brand">
+                <div class="sidebar-logo">A</div>
+                <div><strong>Attendora</strong><span>Smart Attendance</span></div>
+            </div>
+            <nav class="sidebar-nav">
+                <p class="nav-title">MAIN MENU</p>
+                <a href="dashboard.html" class="sidebar-link"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+<a href="enrollment.html" class="sidebar-link active"><span class="nav-icon">+</span><span>Enrollment</span></a>
+<a href="attendance.html" class="sidebar-link"><span class="nav-icon">✓</span><span>Attendance</span></a>
+<a href="record.html" class="sidebar-link"><span class="nav-icon">≡</span><span>Records</span></a>
+
+                <p class="nav-title settings-title">SYSTEM</p>
+                <a href="setting.html" class="sidebar-link"><span class="nav-icon">⚙</span><span>Settings</span></a>
+            </nav>
+        </div>
+        <div class="sidebar-bottom">
+            <div class="teacher-mini-profile">
+                <div class="teacher-avatar js-teacher-initial">T</div>
+                <div><strong class="js-teacher-name">Teacher</strong><span>Administrator</span></div>
+            </div>
+            <button class="sidebar-logout" onclick="logout()"><span>↪</span> Logout</button>
+        </div>
+    </aside>
+
+    <div class="app-main">
+        <header class="app-topbar">
+            <button class="menu-button" id="menuButton" aria-label="Open navigation menu">☰</button>
+            <div class="mobile-brand"><div class="mobile-brand-logo">A</div><strong>Attendora</strong></div>
+            <div class="topbar-right">
+                <div class="notification"><span>🔔</span><i></i></div>
+                <div class="topbar-profile">
+                    <div class="topbar-avatar js-teacher-initial">T</div>
+                    <div class="topbar-user"><strong class="js-teacher-name">Teacher</strong><span>Administrator</span></div>
+                </div>
+            </div>
+        </header>
+
+        <section class="enrollment-page">
+            <div class="page-header">
+                <div>
+                    <span class="page-tag">STUDENT MANAGEMENT</span>
+                    <h1>Enroll a Student</h1>
+                    <p>Add a new student and register their face for smart attendance.</p>
+                </div>
+                <div class="page-header-icon">👤</div>
+            </div>
+
+            <div class="enrollment-layout">
+                <div class="enrollment-card">
+                    <div class="card-heading">
+                        <div><h3>Student Information</h3><p>Enter the student's basic details.</p></div>
+                        <div class="section-number">01</div>
+                    </div>
+                    <form id="enrollmentForm">
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="studentId">Student ID</label>
+                                <input type="text" id="studentId" placeholder="e.g. STU001" required>
+                            </div>
+                            <div class="form-field">
+                                <label for="studentName">Student Name</label>
+                                <input type="text" id="studentName" placeholder="Enter student's full name" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-field">
+                                <label for="course">Course / Class</label>
+                                <input type="text" id="course" placeholder="e.g. MCA 2nd Year" required>
+                            </div>
+                        </div>
+                        <div class="student-note">
+                            <span>ⓘ</span>
+                            <p>Make sure the Student ID is unique. It identifies the student in attendance records.
+                               The photo must contain exactly one clear face.</p>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="primary-button" id="enrollStudentButton">Enroll Student</button>
+                        </div>
+                    </form>
+                    <div class="enrollment-success" id="enrollmentSuccess">
+                        <div class="success-icon">✓</div>
+                        <div><strong>Student enrolled</strong><span id="enrollmentSuccessText">Face registered successfully.</span></div>
+                    </div>
+                </div>
+
+                <div class="enrollment-card face-card">
+                    <div class="card-heading">
+                        <div><h3>Face Registration</h3><p>Capture a live photo or upload a clear student image.</p></div>
+                        <div class="section-number">02</div>
+                    </div>
+
+                    <div class="camera-area">
+                        <video id="cameraPreview" autoplay playsinline muted></video>
+                        <div class="camera-placeholder" id="cameraPlaceholder">
+                            <div class="camera-icon">📷</div>
+                            <strong>Camera is off</strong>
+                            <span>Start the camera to capture a photo</span>
+                        </div>
+                    </div>
+
+                    <div class="captured-photo" id="capturedPhoto">
+                        <img id="capturedImage" alt="Captured student face">
+                        <div><strong>Photo ready</strong><span>Face image is ready for registration.</span></div>
+                    </div>
+
+                    <div class="camera-controls">
+                        <button type="button" class="camera-button" id="startCameraButton">📷 Start Camera</button>
+                        <button type="button" class="capture-button" id="captureButton" disabled>● Capture Photo</button>
+                        <button type="button" class="retake-button" id="retakeButton" disabled>↻ Retake</button>
+                    </div>
+
+                    <div class="upload-divider"><span>OR</span></div>
+
+                    <input type="file" id="studentPhoto" accept="image/*" hidden>
+                    <button type="button" class="upload-button" id="uploadButton">🖼 Upload Photo</button>
+
+                    <div class="face-tips">
+                        <div><span>✓</span> Good lighting</div>
+                        <div><span>✓</span> Face clearly visible</div>
+                        <div><span>✓</span> One person only</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="records-card enrolled-card">
+                <div class="records-card-header">
+                    <div><h3>Enrolled Students</h3><p id="enrolledCount">Loading...</p></div>
+                </div>
+                <div class="records-table-wrapper">
+                    <table class="records-table">
+                        <thead><tr><th>Student</th><th>Student ID</th><th>Course</th><th>Face</th><th></th></tr></thead>
+                        <tbody id="enrolledBody"><tr><td colspan="5">Loading...</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <script src="script.js"></script>
+</body>
+</html>

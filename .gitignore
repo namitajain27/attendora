@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+backend1/
+
+# Secrets & local data
+.env
+*.db
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

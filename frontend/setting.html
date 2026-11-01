@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings | Attendora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="settings">
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+            <div class="sidebar-brand">
+                <div class="sidebar-logo">A</div>
+                <div><strong>Attendora</strong><span>Smart Attendance</span></div>
+            </div>
+            <nav class="sidebar-nav">
+                <p class="nav-title">MAIN MENU</p>
+                <a href="dashboard.html" class="sidebar-link"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+<a href="enrollment.html" class="sidebar-link"><span class="nav-icon">+</span><span>Enrollment</span></a>
+<a href="attendance.html" class="sidebar-link"><span class="nav-icon">✓</span><span>Attendance</span></a>
+<a href="record.html" class="sidebar-link"><span class="nav-icon">≡</span><span>Records</span></a>
+
+                <p class="nav-title settings-title">SYSTEM</p>
+                <a href="setting.html" class="sidebar-link active"><span class="nav-icon">⚙</span><span>Settings</span></a>
+            </nav>
+        </div>
+        <div class="sidebar-bottom">
+            <div class="teacher-mini-profile">
+                <div class="teacher-avatar js-teacher-initial">T</div>
+                <div><strong class="js-teacher-name">Teacher</strong><span>Administrator</span></div>
+            </div>
+            <button class="sidebar-logout" onclick="logout()"><span>↪</span> Logout</button>
+        </div>
+    </aside>
+
+    <div class="app-main">
+        <header class="app-topbar">
+            <button class="menu-button" id="menuButton" aria-label="Open navigation menu">☰</button>
+            <div class="mobile-brand"><div class="mobile-brand-logo">A</div><strong>Attendora</strong></div>
+            <div class="topbar-right">
+                <div class="notification"><span>🔔</span><i></i></div>
+                <div class="topbar-profile">
+                    <div class="topbar-avatar js-teacher-initial">T</div>
+                    <div class="topbar-user"><strong class="js-teacher-name">Teacher</strong><span>Administrator</span></div>
+                </div>
+            </div>
+        </header>
+
+        <section class="settings-page">
+            <div class="page-header settings-header">
+                <div>
+                    <span class="page-tag">SYSTEM SETTINGS</span>
+                    <h1>Settings</h1>
+                    <p>Manage display preferences for this browser.</p>
+                </div>
+            </div>
+
+            <div class="settings-layout">
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <div class="settings-card-icon">👤</div>
+                        <div><h3>Teacher Profile</h3><p>Shown in the sidebar and top bar.</p></div>
+                    </div>
+                    <div class="settings-form">
+                        <div class="settings-avatar-section">
+                            <div class="large-teacher-avatar js-teacher-initial">T</div>
+                            <div><strong class="js-teacher-name">Teacher</strong><span>Administrator</span></div>
+                        </div>
+                        <div class="settings-field"><label for="teacherName">Full Name</label><input type="text" id="teacherName"></div>
+                        <div class="settings-field"><label for="teacherIdSettings">Teacher ID</label><input type="text" id="teacherIdSettings" readonly></div>
+                        <div class="settings-field"><label for="teacherEmail">Email Address</label><input type="email" id="teacherEmail" placeholder="teacher@example.com"></div>
+                    </div>
+                    <div class="settings-card-footer">
+                        <button class="save-settings-button" id="saveProfileButton">Save Changes</button>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <div class="settings-card-icon purple">⚙</div>
+                        <div><h3>Attendance Settings</h3><p>Configure attendance behavior.</p></div>
+                    </div>
+                    <div class="settings-options">
+                        <div class="settings-option">
+                            <div><strong>Automatic Attendance</strong><span>Mark recognized students Present automatically. If off, you confirm each student.</span></div>
+                            <label class="toggle"><input type="checkbox" id="automaticAttendance" checked><span class="toggle-slider"></span></label>
+                        </div>
+                        <div class="settings-option">
+                            <div><strong>Recognition Notifications</strong><span>Show a pop-up when a student is recognized.</span></div>
+                            <label class="toggle"><input type="checkbox" id="recognitionNotifications" checked><span class="toggle-slider"></span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-card">
+                    <div class="settings-card-header">
+                        <div class="settings-card-icon cyan">◉</div>
+                        <div><h3>Camera</h3><p>Configure camera preferences.</p></div>
+                    </div>
+                    <div class="settings-options">
+                        <div class="settings-option">
+                            <div><strong>Camera Quality</strong><span>Higher quality can be slower on weak computers.</span></div>
+                            <select class="settings-select" id="cameraQuality">
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-card system-info-card">
+                    <div class="settings-card-header">
+                        <div class="settings-card-icon orange">ℹ</div>
+                        <div><h3>System Information</h3><p>Attendora application details.</p></div>
+                    </div>
+                    <div class="system-info-list">
+                        <div><span>Application</span><strong>Attendora</strong></div>
+                        <div><span>Version</span><strong>1.0.0</strong></div>
+                        <div><span>Attendance Method</span><strong>Face Recognition</strong></div>
+                        <div><span>Backend</span><strong id="backendStatus">Checking...</strong></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="settings-success" id="settingsSuccess">✓ Settings saved successfully.</div>
+        </section>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <script src="script.js"></script>
+</body>
+</html>

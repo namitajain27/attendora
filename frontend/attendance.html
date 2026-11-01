@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance | Attendora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="attendance">
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+            <div class="sidebar-brand">
+                <div class="sidebar-logo">A</div>
+                <div><strong>Attendora</strong><span>Smart Attendance</span></div>
+            </div>
+            <nav class="sidebar-nav">
+                <p class="nav-title">MAIN MENU</p>
+                <a href="dashboard.html" class="sidebar-link"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+<a href="enrollment.html" class="sidebar-link"><span class="nav-icon">+</span><span>Enrollment</span></a>
+<a href="attendance.html" class="sidebar-link active"><span class="nav-icon">✓</span><span>Attendance</span></a>
+<a href="record.html" class="sidebar-link"><span class="nav-icon">≡</span><span>Records</span></a>
+
+                <p class="nav-title settings-title">SYSTEM</p>
+                <a href="setting.html" class="sidebar-link"><span class="nav-icon">⚙</span><span>Settings</span></a>
+            </nav>
+        </div>
+        <div class="sidebar-bottom">
+            <div class="teacher-mini-profile">
+                <div class="teacher-avatar js-teacher-initial">T</div>
+                <div><strong class="js-teacher-name">Teacher</strong><span>Administrator</span></div>
+            </div>
+            <button class="sidebar-logout" onclick="logout()"><span>↪</span> Logout</button>
+        </div>
+    </aside>
+
+    <div class="app-main">
+        <header class="app-topbar">
+            <button class="menu-button" id="menuButton" aria-label="Open navigation menu">☰</button>
+            <div class="mobile-brand"><div class="mobile-brand-logo">A</div><strong>Attendora</strong></div>
+            <div class="topbar-right">
+                <div class="notification"><span>🔔</span><i></i></div>
+                <div class="topbar-profile">
+                    <div class="topbar-avatar js-teacher-initial">T</div>
+                    <div class="topbar-user"><strong class="js-teacher-name">Teacher</strong><span>Administrator</span></div>
+                </div>
+            </div>
+        </header>
+
+        <section class="attendance-page">
+            <div class="page-header">
+                <div>
+                    <span class="page-tag">SMART ATTENDANCE</span>
+                    <h1>Take Attendance</h1>
+                    <p>Use face recognition to mark student attendance automatically.</p>
+                </div>
+                <div class="attendance-date-card"><span>Today</span><strong id="attendanceDate">Loading...</strong></div>
+            </div>
+
+            <div class="attendance-main-grid">
+                <div class="attendance-camera-card">
+                    <div class="attendance-card-heading">
+                        <div><h3>Face Recognition</h3><p>Position students in front of the camera.</p></div>
+                        <div class="camera-status" id="cameraStatus"><span></span> Camera Off</div>
+                    </div>
+
+                    <div class="attendance-camera">
+                        <video id="attendanceCamera" autoplay playsinline muted></video>
+                        <div class="attendance-camera-placeholder" id="attendancePlaceholder">
+                            <div class="large-camera-icon">📷</div>
+                            <strong>Camera Ready</strong>
+                            <span>Start the camera to begin recognition</span>
+                        </div>
+                        <div class="face-frame" id="faceFrame">
+                            <div class="corner top-left"></div><div class="corner top-right"></div>
+                            <div class="corner bottom-left"></div><div class="corner bottom-right"></div>
+                            <span>Position face here</span>
+                        </div>
+                    </div>
+
+                    <div class="attendance-camera-controls">
+                        <button type="button" class="start-attendance-button" id="startAttendanceCamera">📷 Start Camera</button>
+                        <button type="button" class="stop-attendance-button" id="stopAttendanceCamera" disabled>■ Stop Camera</button>
+                    </div>
+
+                    <div class="recognition-status" id="recognitionStatus">
+                        <div class="recognition-dot"></div>
+                        <div><strong>Recognition inactive</strong><span>Start the camera to begin face recognition.</span></div>
+                    </div>
+                </div>
+
+                <div class="attendance-summary-card">
+                    <div class="attendance-card-heading">
+                        <div><h3>Today's Summary</h3><p>Current attendance overview.</p></div>
+                    </div>
+                    <div class="attendance-percentage">
+                        <div class="percentage-circle" id="summaryRing"><div><strong id="summaryPercent">0%</strong><span>Attendance</span></div></div>
+                    </div>
+                    <div class="attendance-summary-stats">
+                        <div class="summary-stat"><div class="summary-icon present">✓</div><div><strong id="summaryPresent">0</strong><span>Present</span></div></div>
+                        <div class="summary-stat"><div class="summary-icon absent">×</div><div><strong id="summaryAbsent">0</strong><span>Not present yet</span></div></div>
+                        <div class="summary-stat"><div class="summary-icon total">👥</div><div><strong id="summaryTotal">0</strong><span>Total Students</span></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recognized-card">
+                <div class="recognized-header">
+                    <div><h3>Recognized Students</h3><p>Students recognized during this session.</p></div>
+                    <span class="live-badge">● LIVE</span>
+                </div>
+                <div class="recognized-empty" id="recognizedEmpty">
+                    <div>👤</div>
+                    <strong>No students recognized yet</strong>
+                    <span>Start the camera and position a student in view.</span>
+                </div>
+                <div class="recognized-list" id="recognizedList"></div>
+            </div>
+
+            <div class="attendance-session">
+                <div class="session-info">
+                    <div class="session-icon">✓</div>
+                    <div>
+                        <strong>Attendance session</strong>
+                        <span>Recognized students are marked Present. Finishing the session marks everyone else Absent.</span>
+                    </div>
+                </div>
+                <div class="session-buttons">
+                    <button type="button" class="manual-button" id="manualAttendance">Mark Manually</button>
+                    <button type="button" class="finish-session-button" id="finishSession">Finish Session →</button>
+                </div>
+            </div>
+
+            <div class="session-message" id="sessionMessage">Attendance session completed successfully.</div>
+        </section>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Teacher Login | Attendora</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="login">
+
+    <div class="login-page">
+
+        <!-- Left Side -->
+        <div class="login-left">
+
+            <div class="login-brand">
+                <div class="brand-icon">A</div>
+                <span>Attendora</span>
+            </div>
+
+            <div class="login-content">
+
+                <span class="login-tag">SMART ATTENDANCE SYSTEM</span>
+
+                <h1>
+                    Manage attendance
+                    <span>smarter.</span>
+                </h1>
+
+                <p>
+                    Welcome back! Sign in to manage students,
+                    track attendance and use Attendora's smart
+                    face recognition system.
+                </p>
+
+                <div class="login-points">
+
+                    <div class="login-point">
+                        <div class="point-icon">✓</div>
+                        <div>
+                            <strong>Smart Attendance</strong>
+                            <small>Mark attendance using face recognition.</small>
+                        </div>
+                    </div>
+
+                    <div class="login-point">
+                        <div class="point-icon">✓</div>
+                        <div>
+                            <strong>Student Management</strong>
+                            <small>Manage student enrollment easily.</small>
+                        </div>
+                    </div>
+
+                    <div class="login-point">
+                        <div class="point-icon">✓</div>
+                        <div>
+                            <strong>Attendance Records</strong>
+                            <small>View and manage attendance records.</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="login-footer">
+                © 2026 Attendora · Smart Student Attendance
+            </div>
+
+        </div>
+
+
+        <!-- Right Side -->
+        <div class="login-right">
+
+            <div class="login-box">
+
+                <div class="login-icon">
+                    👤
+                </div>
+
+                <h2>Welcome back!</h2>
+
+                <p class="login-subtitle">
+                    Sign in to your teacher account
+                </p>
+
+
+                <form id="loginForm">
+
+                    <!-- Teacher ID -->
+                    <div class="form-group">
+
+                        <label for="teacherId">
+                            Teacher ID
+                        </label>
+
+                        <input
+                            type="text"
+                            id="teacherId"
+                            placeholder="Default: TCH001"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Password -->
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Default: admin123"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Options -->
+                    <div class="login-options">
+
+                        <label class="remember">
+                            <input type="checkbox" id="rememberMe">
+                            <span>Remember me</span>
+                        </label>
+
+                        <a href="#" onclick="return false;">
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+
+                    <p class="login-error" id="loginError"></p>
+
+                    <!-- Login Button -->
+                    <button type="submit" class="login-button">
+                        Sign In
+                        <span>→</span>
+                    </button>
+
+                </form>
+
+
+                <div class="login-security">
+                    <span>🔒</span>
+                    Secure access for authorized teachers
+                </div>
+
+
+                <button class="back-home"
+                        onclick="window.location.href='index.html'">
+                    ← Back to Home
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Attendance System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body data-page="home">
+
+    <!-- Background decoration -->
+    <div class="bg-shape shape-one"></div>
+    <div class="bg-shape shape-two"></div>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="navbar">
+
+        <div class="logo">
+            <div class="logo-mark">A</div>
+
+            <div>
+                <h2>Attendora</h2>
+                <span>Smart Attendance</span>
+            </div>
+        </div>
+
+
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#features">Features</a>
+            <a href="#about">About</a>
+        </nav>
+
+
+        <button class="teacher-btn" onclick="goToLogin()">
+            Teacher Login
+            <span>→</span>
+        </button>
+
+    </header>
+
+
+
+    <!-- ================= HERO ================= -->
+
+    <main class="hero">
+
+        <!-- LEFT SIDE -->
+
+        <section class="hero-content">
+
+            <div class="hero-badge">
+                <span class="pulse"></span>
+                AI-Powered Attendance
+            </div>
+
+
+            <h1>
+                Attendance that
+                <span>thinks smarter.</span>
+            </h1>
+
+
+            <p class="hero-description">
+                Transform the way you manage classroom attendance.
+                Attendora uses face recognition technology to make
+                attendance fast, accurate and effortless.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <button class="primary-btn" onclick="goToLogin()">
+                    Get Started
+                    <span>→</span>
+                </button>
+
+                <button class="watch-btn" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">
+                    Explore Features
+                </button>
+
+            </div>
+
+
+            <!-- TRUST INFO -->
+
+            <div class="trust-row">
+
+                <div class="avatars">
+
+                    <div class="avatar">A</div>
+                    <div class="avatar">R</div>
+                    <div class="avatar">S</div>
+                    <div class="avatar">+</div>
+
+                </div>
+
+                <div class="trust-text">
+                    <strong>Smart classroom management</strong>
+                    <span>Built for teachers & students</span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= RIGHT VISUAL ================= -->
+
+        <section class="hero-visual">
+
+            <!-- Main Glass Card -->
+
+            <div class="visual-card">
+
+                <div class="visual-header">
+
+                    <div>
+                        <span class="mini-label">LIVE CLASS</span>
+                        <h3>Computer Science</h3>
+                    </div>
+
+                    <div class="live-status">
+                        <span></span>
+                        Live
+                    </div>
+
+                </div>
+
+
+                <!-- Dummy Student Visual -->
+
+                <div class="student-area">
+
+                    <div class="student-circle">
+
+                        <div class="student-head"></div>
+
+                        <div class="student-body"></div>
+
+                    </div>
+
+
+                    <!-- Face recognition frame -->
+
+                    <div class="scan-frame">
+
+                        <span class="corner top-left"></span>
+                        <span class="corner top-right"></span>
+                        <span class="corner bottom-left"></span>
+                        <span class="corner bottom-right"></span>
+
+                        <div class="scan-line"></div>
+
+                    </div>
+
+
+                    <div class="recognition-label">
+                        <span class="check">✓</span>
+
+                        <div>
+                            <strong>Face Recognized</strong>
+                            <small>Student #ST1024</small>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- Attendance bottom -->
+
+                <div class="attendance-summary">
+
+                    <div class="summary-item">
+                        <span class="summary-icon blue">✓</span>
+
+                        <div>
+                            <strong>42</strong>
+                            <small>Students</small>
+                        </div>
+                    </div>
+
+
+                    <div class="summary-item">
+                        <span class="summary-icon green">●</span>
+
+                        <div>
+                            <strong>36</strong>
+                            <small>Present</small>
+                        </div>
+                    </div>
+
+
+                    <div class="summary-item">
+                        <span class="summary-icon orange">○</span>
+
+                        <div>
+                            <strong>06</strong>
+                            <small>Absent</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Floating Attendance Card -->
+
+            <div class="floating-card attendance-card">
+
+                <div class="floating-icon green-icon">
+                    ✓
+                </div>
+
+                <div>
+                    <span>Attendance Marked</span>
+                    <strong>Alex Johnson</strong>
+                </div>
+
+                <small>Just now</small>
+
+            </div>
+
+
+
+            <!-- Floating Percentage Card -->
+
+            <div class="floating-card percentage-card">
+
+                <div class="percentage-circle">
+                    86%
+                </div>
+
+                <div>
+                    <span>Today's</span>
+                    <strong>Attendance</strong>
+                </div>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ================= FEATURES ================= -->
+
+    <section class="features-section" id="features">
+
+        <div class="section-heading">
+
+            <span>WHY ATTENDORA</span>
+
+            <h2>
+                Built for smarter classrooms
+            </h2>
+
+            <p>
+                Everything teachers need to manage attendance
+                without the paperwork.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+            <div class="feature-card">
+
+                <div class="feature-icon blue-icon">
+                    ◉
+                </div>
+
+                <h3>Face Recognition</h3>
+
+                <p>
+                    Identify students quickly using
+                    face recognition technology.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon purple-icon">
+                    ✓
+                </div>
+
+                <h3>Automatic Attendance</h3>
+
+                <p>
+                    Mark attendance efficiently
+                    without manual records.
+                </p>
+
+            </div>
+
+
+            <div class="feature-card">
+
+                <div class="feature-icon cyan-icon">
+                    ▣
+                </div>
+
+                <h3>Easy Management</h3>
+
+                <p>
+                    View students and attendance
+                    records from one dashboard.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <footer>
+
+        <strong>Attendora</strong>
+
+        <span>
+            Smart Attendance Management System
+        </span>
+
+    </footer>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

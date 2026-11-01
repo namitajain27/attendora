@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Records | Attendora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="records">
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+            <div class="sidebar-brand">
+                <div class="sidebar-logo">A</div>
+                <div><strong>Attendora</strong><span>Smart Attendance</span></div>
+            </div>
+            <nav class="sidebar-nav">
+                <p class="nav-title">MAIN MENU</p>
+                <a href="dashboard.html" class="sidebar-link"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+<a href="enrollment.html" class="sidebar-link"><span class="nav-icon">+</span><span>Enrollment</span></a>
+<a href="attendance.html" class="sidebar-link"><span class="nav-icon">✓</span><span>Attendance</span></a>
+<a href="record.html" class="sidebar-link active"><span class="nav-icon">≡</span><span>Records</span></a>
+
+                <p class="nav-title settings-title">SYSTEM</p>
+                <a href="setting.html" class="sidebar-link"><span class="nav-icon">⚙</span><span>Settings</span></a>
+            </nav>
+        </div>
+        <div class="sidebar-bottom">
+            <div class="teacher-mini-profile">
+                <div class="teacher-avatar js-teacher-initial">T</div>
+                <div><strong class="js-teacher-name">Teacher</strong><span>Administrator</span></div>
+            </div>
+            <button class="sidebar-logout" onclick="logout()"><span>↪</span> Logout</button>
+        </div>
+    </aside>
+
+    <div class="app-main">
+        <header class="app-topbar">
+            <button class="menu-button" id="menuButton" aria-label="Open navigation menu">☰</button>
+            <div class="mobile-brand"><div class="mobile-brand-logo">A</div><strong>Attendora</strong></div>
+            <div class="topbar-right">
+                <div class="notification"><span>🔔</span><i></i></div>
+                <div class="topbar-profile">
+                    <div class="topbar-avatar js-teacher-initial">T</div>
+                    <div class="topbar-user"><strong class="js-teacher-name">Teacher</strong><span>Administrator</span></div>
+                </div>
+            </div>
+        </header>
+
+        <section class="records-page">
+            <div class="page-header records-header">
+                <div>
+                    <span class="page-tag">ATTENDANCE HISTORY</span>
+                    <h1>Attendance Records</h1>
+                    <p>View, search and export student attendance records.</p>
+                </div>
+                <button class="export-records-button" id="exportRecordsButton">↓ Export CSV</button>
+            </div>
+
+            <div class="records-summary-grid">
+                <div class="record-stat-card"><div class="record-stat-icon">👥</div><div><span>Total Students</span><strong id="totalStudentsCount">0</strong></div></div>
+                <div class="record-stat-card"><div class="record-stat-icon present">✓</div><div><span>Present Today</span><strong id="presentTodayCount">0</strong></div></div>
+                <div class="record-stat-card"><div class="record-stat-icon absent">!</div><div><span>Absent Today</span><strong id="absentTodayCount">0</strong></div></div>
+                <div class="record-stat-card"><div class="record-stat-icon percentage">%</div><div><span>Attendance Rate</span><strong id="attendanceRateCount">0%</strong></div></div>
+            </div>
+
+            <div class="records-card">
+                <div class="records-card-header">
+                    <div><h3>Attendance History</h3><p>Daily attendance records of registered students.</p></div>
+                    <div class="records-filters">
+                        <input type="text" id="recordSearch" placeholder="Search student...">
+                        <select id="recordStatusFilter">
+                            <option value="all">All Status</option>
+                            <option value="present">Present</option>
+                            <option value="absent">Absent</option>
+                        </select>
+                        <input type="date" id="recordDateFilter">
+                    </div>
+                </div>
+                <div class="records-table-wrapper">
+                    <table class="records-table">
+                        <thead><tr><th>Student</th><th>Student ID</th><th>Date</th><th>Time</th><th>Status</th><th>Method</th></tr></thead>
+                        <tbody id="recordsTableBody"><tr><td colspan="6">Loading...</td></tr></tbody>
+                    </table>
+                </div>
+                <div class="records-footer">
+                    <span id="recordsCount">Showing 0 records</span>
+                    <div class="pagination" id="pagination"></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <script src="script.js"></script>
+</body>
+</html>

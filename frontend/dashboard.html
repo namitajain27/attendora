@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Attendora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-page="dashboard">
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+            <div class="sidebar-brand">
+                <div class="sidebar-logo">A</div>
+                <div><strong>Attendora</strong><span>Smart Attendance</span></div>
+            </div>
+            <nav class="sidebar-nav">
+                <p class="nav-title">MAIN MENU</p>
+                <a href="dashboard.html" class="sidebar-link active"><span class="nav-icon">⌂</span><span>Dashboard</span></a>
+<a href="enrollment.html" class="sidebar-link"><span class="nav-icon">+</span><span>Enrollment</span></a>
+<a href="attendance.html" class="sidebar-link"><span class="nav-icon">✓</span><span>Attendance</span></a>
+<a href="record.html" class="sidebar-link"><span class="nav-icon">≡</span><span>Records</span></a>
+
+                <p class="nav-title settings-title">SYSTEM</p>
+                <a href="setting.html" class="sidebar-link"><span class="nav-icon">⚙</span><span>Settings</span></a>
+            </nav>
+        </div>
+        <div class="sidebar-bottom">
+            <div class="teacher-mini-profile">
+                <div class="teacher-avatar js-teacher-initial">T</div>
+                <div><strong class="js-teacher-name">Teacher</strong><span>Administrator</span></div>
+            </div>
+            <button class="sidebar-logout" onclick="logout()"><span>↪</span> Logout</button>
+        </div>
+    </aside>
+
+    <div class="app-main">
+        <header class="app-topbar">
+            <button class="menu-button" id="menuButton" aria-label="Open navigation menu">☰</button>
+            <div class="mobile-brand"><div class="mobile-brand-logo">A</div><strong>Attendora</strong></div>
+            <div class="topbar-right">
+                <div class="notification"><span>🔔</span><i></i></div>
+                <div class="topbar-profile">
+                    <div class="topbar-avatar js-teacher-initial">T</div>
+                    <div class="topbar-user"><strong class="js-teacher-name">Teacher</strong><span>Administrator</span></div>
+                </div>
+            </div>
+        </header>
+
+        <main class="dashboard">
+            <section class="dashboard-header">
+                <div>
+                    <span class="page-label">TEACHER DASHBOARD</span>
+                    <h1 id="greeting">Good morning!</h1>
+                    <p>Here's what's happening with your students today.</p>
+                </div>
+                <div class="today-card"><span>Today</span><strong id="currentDate">Loading...</strong></div>
+            </section>
+
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-top"><span>Total Students</span><div class="stat-icon purple">👥</div></div>
+                    <h2 id="statTotal">0</h2><p>Registered students</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-top"><span>Present Today</span><div class="stat-icon green">✓</div></div>
+                    <h2 id="statPresent">0</h2><p class="positive" id="statPresentPct">0% of students</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-top"><span>Absent Today</span><div class="stat-icon orange">!</div></div>
+                    <h2 id="statAbsent">0</h2><p>Not yet present</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-top"><span>Attendance Rate</span><div class="stat-icon cyan">%</div></div>
+                    <h2 id="statRate">0%</h2><p class="positive">Today's attendance</p>
+                </div>
+            </section>
+
+            <section class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="card-heading">
+                        <div><h3>Today's Attendance</h3><p>Attendance overview for today</p></div>
+                        <span class="status-badge">Live</span>
+                    </div>
+                    <div class="attendance-overview">
+                        <div class="attendance-circle" id="ring"><div><strong id="ringPercent">0%</strong><span>Present</span></div></div>
+                        <div class="attendance-details">
+                            <div class="attendance-row"><span><i class="dot present"></i> Present</span><strong id="ringPresent">0</strong></div>
+                            <div class="attendance-row"><span><i class="dot absent"></i> Absent</span><strong id="ringAbsent">0</strong></div>
+                            <div class="attendance-row"><span><i class="dot total"></i> Total</span><strong id="ringTotal">0</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="card-heading"><div><h3>Quick Actions</h3><p>Frequently used actions</p></div></div>
+                    <div class="quick-actions">
+                        <a href="enrollment.html" class="quick-action"><div class="action-icon purple">+</div><div><strong>Enroll Student</strong><span>Add a new student</span></div><b>→</b></a>
+                        <a href="attendance.html" class="quick-action"><div class="action-icon green">✓</div><div><strong>Mark Attendance</strong><span>Use face recognition</span></div><b>→</b></a>
+                        <a href="record.html" class="quick-action"><div class="action-icon cyan">≡</div><div><strong>View Records</strong><span>Check attendance history</span></div><b>→</b></a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dashboard-card recent-card">
+                <div class="card-heading">
+                    <div><h3>Recent Attendance</h3><p>Latest attendance activity</p></div>
+                    <a href="record.html" class="view-all">View all →</a>
+                </div>
+                <div class="table-wrapper">
+                    <table>
+                        <thead><tr><th>Student</th><th>Student ID</th><th>Status</th><th>Time</th></tr></thead>
+                        <tbody id="recentBody"><tr><td colspan="4">Loading...</td></tr></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="toast" id="toast"></div>
+    <script src="script.js"></script>
+</body>
+</html>
